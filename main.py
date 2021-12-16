@@ -40,8 +40,8 @@ def main():
     comic_model = model_load()
 
 
-    menu = ['Image Based', 'URL']
-    # menu = ['Image Based']
+    # menu = ['Image Based', 'Video Based']
+    menu = ['Image Based']
     st.sidebar.header('Mode Selection')
     choice = st.sidebar.selectbox('How would you like to be turn ?', menu)
 
@@ -73,58 +73,38 @@ def main():
             prediction=  prediction.numpy()
             with col2:
                 st.image(prediction)
-                
-     elif choice == 'URL':
-        response = requests.get(url)
-        Image = Image.open(BytesIO(response.content))
-        
-        if Image is not None:
-            col1, col2 = st.beta_columns(2)
-            Image = Image.read()
-            Image = tf.image.decode_image(Image, channels=3).numpy()                  
-            Image = adjust_gamma(Image, gamma=gamma)
-            with col1:
-                st.image(Image)
-            input_image = loadtest(Image,cropornot=Autocrop)
-            prediction = comic_model(input_image, training=True)
-            prediction = tf.squeeze(prediction,0)
-            prediction = prediction* 0.5 + 0.5
-            prediction = tf.image.resize(prediction, 
-                           [outputsize, outputsize],
-                           method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
-            prediction=  prediction.numpy()
-            with col2:
-                st.image(prediction)
+    
 
-   
+    elif choice == 'Video Based':
 
-         #class OpenCVVideoProcessor(VideoProcessorBase):
-        #     def __init__(self) -> None:
-          #       self._model_lock = threading.Lock()
-          #       self.model = model_load()
+    #     class OpenCVVideoProcessor(VideoProcessorBase):
+    #         def __init__(self) -> None:
+    #             self._model_lock = threading.Lock()
+    #             self.model = model_load()
             
-           #  def recv(self, frame: av.VideoFrame):
+    #         def recv(self, frame: av.VideoFrame):
 
-            #     img = frame.to_ndarray(format="bgr24")
-           #      img = cv2.flip(img, 1)
-           #      frame =loadframe(img)
-           #      frame = self.model(frame, training=True)
-           #      frame = tf.squeeze(frame,0)
-           #      frame = frame* 0.5 + 0.5
-            #     frame = tf.image.resize(frame, 
-            #                 [384, 384],
-            #                 method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
-             #    frame = frame.numpy()
-             #    print(type(frame))
-            #     print(frame.shape)
+    #             img = frame.to_ndarray(format="bgr24")
+    #             img = cv2.flip(img, 1)
+    #             frame =loadframe(img)
+    #             frame = self.model(frame, training=True)
+    #             frame = tf.squeeze(frame,0)
+    #             frame = frame* 0.5 + 0.5
+    #             frame = tf.image.resize(frame, 
+    #                         [384, 384],
+    #                         method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+    #             frame = frame.numpy()
+    #             print(type(frame))
+    #             print(frame.shape)
 
-            #     return av.VideoFrame.from_ndarray(frame, format="bgr24")
+    #             return av.VideoFrame.from_ndarray(frame, format="bgr24")
 
         
-       # webrtc_streamer(key="Test",
-        # client_settings=WEBRTC_CLIENT_SETTINGS,
-        # async_processing=True,video_processor_factory=OpenCVVideoProcessor,
-#)
+    #     webrtc_streamer(key="Test",
+    #     client_settings=WEBRTC_CLIENT_SETTINGS,
+    #     async_processing=True,video_processor_factory=OpenCVVideoProcessor,
+
+    # )
         run = st.checkbox('Run')
         FRAMEWINDOW = st.image([])
         camera = cv2.VideoCapture(0)
