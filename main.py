@@ -4,6 +4,7 @@ import threading
 from PIL import Image
 import requests
 from io import BytesIO
+import streamlit as st
 
 
 # from streamlit_webrtc import (
