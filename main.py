@@ -40,8 +40,8 @@ def main():
     comic_model = model_load()
 
 
-    # menu = ['Image Based', 'Video Based']
-    menu = ['Image Based']
+     menu = ['Image Based', 'URL']
+    #menu = ['Image Based']
     st.sidebar.header('Mode Selection')
     choice = st.sidebar.selectbox('How would you like to be turn ?', menu)
 
@@ -75,8 +75,26 @@ def main():
                 st.image(prediction)
     
 
-    elif choice == 'Video Based':
-
+    elif choice == 'URL':
+        response = requests.get(url)
+        Image = Image.open(BytesIO(response.content))
+        if Image is not None:
+            col1, col2 = st.beta_columns(2)
+            Image = Image.read()
+            Image = tf.image.decode_image(Image, channels=3).numpy()                  
+            Image = adjust_gamma(Image, gamma=gamma)
+            with col1:
+                st.image(Image)
+            input_image = loadtest(Image,cropornot=Autocrop)
+            prediction = comic_model(input_image, training=True)
+            prediction = tf.squeeze(prediction,0)
+            prediction = prediction* 0.5 + 0.5
+            prediction = tf.image.resize(prediction, 
+                           [outputsize, outputsize],
+                           method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+            prediction=  prediction.numpy()
+            with col2:
+                st.image(prediction)
     #     class OpenCVVideoProcessor(VideoProcessorBase):
     #         def __init__(self) -> None:
     #             self._model_lock = threading.Lock()
