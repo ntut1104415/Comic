@@ -40,7 +40,7 @@ def main():
     comic_model = model_load()
 
 
-    menu = ['Image Based', 'Video Based']
+    menu = ['Image Based', 'URL']
     # menu = ['Image Based']
     st.sidebar.header('Mode Selection')
     choice = st.sidebar.selectbox('How would you like to be turn ?', menu)
@@ -73,9 +73,8 @@ def main():
             prediction=  prediction.numpy()
             with col2:
                 st.image(prediction)
-    
-
-    elif choice == 'URL':
+                
+     elif choice == 'URL':
         response = requests.get(url)
         Image = Image.open(BytesIO(response.content))
         
@@ -96,6 +95,8 @@ def main():
             prediction=  prediction.numpy()
             with col2:
                 st.image(prediction)
+
+   
 
          #class OpenCVVideoProcessor(VideoProcessorBase):
         #     def __init__(self) -> None:
