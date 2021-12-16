@@ -78,7 +78,7 @@ def main():
 
     elif choice == 'URL':
         url = st.text_input('The URL link')
-        connected = http.client.HTTPConnection(url)
+        st.image("url")
         
         Image = url.open(BytesIO(response.content))
         if Image is not None:
