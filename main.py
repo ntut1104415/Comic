@@ -72,34 +72,34 @@ def main():
 
     elif choice == 'Video Based':
 
-    #     class OpenCVVideoProcessor(VideoProcessorBase):
-    #         def __init__(self) -> None:
-    #             self._model_lock = threading.Lock()
-    #             self.model = model_load()
+         class OpenCVVideoProcessor(VideoProcessorBase):
+             def __init__(self) -> None:
+                 self._model_lock = threading.Lock()
+                 self.model = model_load()
             
-    #         def recv(self, frame: av.VideoFrame):
+             def recv(self, frame: av.VideoFrame):
 
-    #             img = frame.to_ndarray(format="bgr24")
-    #             img = cv2.flip(img, 1)
-    #             frame =loadframe(img)
-    #             frame = self.model(frame, training=True)
-    #             frame = tf.squeeze(frame,0)
-    #             frame = frame* 0.5 + 0.5
-    #             frame = tf.image.resize(frame, 
-    #                         [384, 384],
-    #                         method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
-    #             frame = frame.numpy()
-    #             print(type(frame))
-    #             print(frame.shape)
+                 img = frame.to_ndarray(format="bgr24")
+                 img = cv2.flip(img, 1)
+                 frame =loadframe(img)
+                 frame = self.model(frame, training=True)
+                 frame = tf.squeeze(frame,0)
+                 frame = frame* 0.5 + 0.5
+                 frame = tf.image.resize(frame, 
+                             [384, 384],
+                             method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+                 frame = frame.numpy()
+                 print(type(frame))
+                 print(frame.shape)
 
-    #             return av.VideoFrame.from_ndarray(frame, format="bgr24")
+                 return av.VideoFrame.from_ndarray(frame, format="bgr24")
 
         
-    #     webrtc_streamer(key="Test",
-    #     client_settings=WEBRTC_CLIENT_SETTINGS,
-    #     async_processing=True,video_processor_factory=OpenCVVideoProcessor,
+        webrtc_streamer(key="Test",
+         client_settings=WEBRTC_CLIENT_SETTINGS,
+         async_processing=True,video_processor_factory=OpenCVVideoProcessor,
 
-    # )
+     )
         run = st.checkbox('Run')
         FRAMEWINDOW = st.image([])
         camera = cv2.VideoCapture(0)
