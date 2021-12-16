@@ -77,10 +77,10 @@ def main():
     
 
     elif choice == 'URL':
-        url = st.text_input('The URL link')
-        st.image(url)
+        Image = st.text_input('The URL link')
+        st.image(Image)
         
-        Image = url.open(BytesIO(response.content))
+        Image = Image.open(BytesIO(response.content))
         if Image is not None:
             col1, col2 = st.beta_columns(2)
             Image = Image.read()
