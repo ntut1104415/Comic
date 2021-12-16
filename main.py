@@ -36,7 +36,7 @@ def main():
 
 
     menu = ['Image Based', 'Video Based']
-    menu = ['Image Based']
+    # menu = ['Image Based']
     st.sidebar.header('Mode Selection')
     choice = st.sidebar.selectbox('How would you like to be turn ?', menu)
 
