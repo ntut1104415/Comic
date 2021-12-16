@@ -98,8 +98,7 @@ def main():
         webrtc_streamer(key="Test",
          client_settings=WEBRTC_CLIENT_SETTINGS,
          async_processing=True,video_processor_factory=OpenCVVideoProcessor,
-
-     )
+)
         run = st.checkbox('Run')
         FRAMEWINDOW = st.image([])
         camera = cv2.VideoCapture(0)
