@@ -35,7 +35,7 @@ def main():
     comic_model = model_load()
 
 
-    # menu = ['Image Based', 'Video Based']
+    menu = ['Image Based', 'Video Based']
     menu = ['Image Based']
     st.sidebar.header('Mode Selection')
     choice = st.sidebar.selectbox('How would you like to be turn ?', menu)
