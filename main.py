@@ -77,7 +77,9 @@ def main():
     
 
     elif choice == 'URL':
-        response = st_write.get(url)
+        url = st.text_input('The URL link')
+        connected = http.client.HTTPConnection(url)
+        
         Image = Image.open(BytesIO(response.content))
         if Image is not None:
             col1, col2 = st.beta_columns(2)
