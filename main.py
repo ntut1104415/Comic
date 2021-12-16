@@ -77,7 +77,7 @@ def main():
     
 
     elif choice == 'URL':
-        response = requests.get(url)
+        response = st_write.get(url)
         Image = Image.open(BytesIO(response.content))
         if Image is not None:
             col1, col2 = st.beta_columns(2)
