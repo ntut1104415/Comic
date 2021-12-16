@@ -80,7 +80,7 @@ def main():
         url = st.text_input('The URL link')
         connected = http.client.HTTPConnection(url)
         
-        Image = Image.open(BytesIO(response.content))
+        Image = url.open(BytesIO(response.content))
         if Image is not None:
             col1, col2 = st.beta_columns(2)
             Image = Image.read()
