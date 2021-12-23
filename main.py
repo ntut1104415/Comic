@@ -88,7 +88,7 @@ def main():
         if Image is not None:
             col1, col2 = st.beta_columns(2)
             Image = Image.read()
-            Image = tf.image.decode_image(Image, channels=4).numpy()
+            Image = tf.image.decode_image(Image).numpy()
             st.write("gg")
 
             Image = adjust_gamma(Image, gamma=gamma)
