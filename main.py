@@ -82,7 +82,7 @@ def main():
         Autocrop = st.sidebar.checkbox('Auto Crop Image',value=True) 
         gamma = st.sidebar.slider('Gamma adjust', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
         
-        Image = st._input('The URL link')
+        Image = st.text_image('The URL link')
         st.image(Image)
         Image= Image.open(Image)
         if Image is not None:
