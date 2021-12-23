@@ -84,6 +84,7 @@ def main():
         
         url = st.text_input('The URL link')
         response = requests.get(url)
+        st.write("gggg")
         Image = Image.open(BytesIO(response.content))
         st.image(Image)
         if Image is not None:
