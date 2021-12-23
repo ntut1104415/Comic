@@ -50,8 +50,9 @@ def main():
     if choice == 'Image Based':
         
         st.sidebar.header('配置')
-        outputsize = st.sidebar.selectbox('輸出尺寸', [384,512,768])
         mode = st.sidebar.selectbox('模式選擇', ['漫畫風格','油畫風格'])
+        outputsize = st.sidebar.selectbox('輸出尺寸', [384,512,768])
+        
         Autocrop = st.sidebar.checkbox('自動裁剪照片',value=True) 
         gamma = st.sidebar.slider('Gamma 調整', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
 
@@ -79,8 +80,9 @@ def main():
 
     elif choice == 'URL':
         st.sidebar.header('配置')
-        outputsize = st.sidebar.selectbox('輸出尺寸', [384,512,768])
         mode = st.sidebar.selectbox('模式選擇', ['漫畫風格','油畫風格'])
+        outputsize = st.sidebar.selectbox('輸出尺寸', [384,512,768])
+       
         Autocrop = st.sidebar.checkbox('自動裁剪照片',value=True) 
         gamma = st.sidebar.slider('Gamma 調整', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
         
