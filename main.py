@@ -132,25 +132,25 @@ def main():
     #     async_processing=True,video_processor_factory=OpenCVVideoProcessor,
 
     # )
-        run = st.checkbox('Run')
-        FRAMEWINDOW = st.image([])
-        camera = cv2.VideoCapture(0)
-        gamma = st.slider('Gamma adjust', min_value=0.1, max_value=3.0,value=1.0,step=0.1)
-        while run:
-            _ , frame = camera.read()
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            frame  = cv2.flip(frame, 1)
-            frame = adjust_gamma(frame, gamma=gamma)
-            # Framecrop = st.checkbox('Auto Crop Frame')
-            frame = loadframe(frame)
-            frame = comic_model(frame, training=True)
-            frame = tf.squeeze(frame,0)
-            frame = frame* 0.5 + 0.5
-            frame = tf.image.resize(frame, 
-                            [384, 384],
-                            method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
-            frame = frame.numpy()
-            FRAMEWINDOW.image(frame)
+    #    run = st.checkbox('Run')
+    #    FRAMEWINDOW = st.image([])
+    #    camera = cv2.VideoCapture(0)
+    #    gamma = st.slider('Gamma adjust', min_value=0.1, max_value=3.0,value=1.0,step=0.1)
+    #    while run:
+    #        _ , frame = camera.read()
+    #        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    #        frame  = cv2.flip(frame, 1)
+    #        frame = adjust_gamma(frame, gamma=gamma)
+    #        # Framecrop = st.checkbox('Auto Crop Frame')
+    #        frame = loadframe(frame)
+    #        frame = comic_model(frame, training=True)
+    #        frame = tf.squeeze(frame,0)
+    #        frame = frame* 0.5 + 0.5
+    #        frame = tf.image.resize(frame, 
+    #                        [384, 384],
+    #                        method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+    #        frame = frame.numpy()
+    #        FRAMEWINDOW.image(frame)
 
 if __name__ == '__main__':
     main()
