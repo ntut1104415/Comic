@@ -43,20 +43,20 @@ def main():
 
     menu = ['Image Based', 'URL']
     #menu = ['Image Based']
-    st.sidebar.header('Mode Selection')
-    choice = st.sidebar.selectbox('How would you like to be turn ?', menu)
+    st.sidebar.header('照片上傳選擇')
+    choice = st.sidebar.selectbox('選擇上傳方式 ?', menu)
 
     # Create the Home page
     if choice == 'Image Based':
         
-        st.sidebar.header('Configuration')
-        outputsize = st.sidebar.selectbox('Output Size', [384,512,768])
-        Autocrop = st.sidebar.checkbox('Auto Crop Image',value=True) 
-        gamma = st.sidebar.slider('Gamma adjust', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
+        st.sidebar.header('配置')
+        outputsize = st.sidebar.selectbox('輸出尺寸', [384,512,768])
+        Autocrop = st.sidebar.checkbox('自動裁剪照片',value=True) 
+        gamma = st.sidebar.slider('Gamma 調整', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
         
  
 
-        Image = st.file_uploader('Upload your portrait here',type=['jpg','jpeg','png'])
+        Image = st.file_uploader('在這上傳您的檔案',type=['jpg','jpeg','png'])
         if Image is not None:
             col1, col2 = st.beta_columns(2)
             Image = Image.read()
@@ -78,10 +78,10 @@ def main():
     
 
     elif choice == 'URL':
-        st.sidebar.header('Configuration')
-        outputsize = st.sidebar.selectbox('Output Size', [384,512,768])
-        Autocrop = st.sidebar.checkbox('Auto Crop Image',value=True) 
-        gamma = st.sidebar.slider('Gamma adjust', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
+        st.sidebar.header('配置')
+        outputsize = st.sidebar.selectbox('輸出尺寸', [384,512,768])
+        Autocrop = st.sidebar.checkbox('自動裁剪照片',value=True) 
+        gamma = st.sidebar.slider('Gamma 調整', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
         
         url = st.text_input('The URL link')
         response = requests.get(url)
