@@ -57,6 +57,7 @@ def main():
  
 
         Image = st.file_uploader('Upload your portrait here',type=['jpg','jpeg','png'])
+        st.write(Image)
         if Image is not None:
             col1, col2 = st.beta_columns(2)
             Image = Image.read()
