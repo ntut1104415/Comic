@@ -104,7 +104,7 @@ def main():
                 prediction=  prediction.numpy()
                 with col2:
                     st.image(prediction)
-       elif choice == '油畫風格':
+       #elif choice == '油畫風格':
     #     class OpenCVVideoProcessor(VideoProcessorBase):
     #         def __init__(self) -> None:
     #             self._model_lock = threading.Lock()
