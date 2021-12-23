@@ -47,10 +47,36 @@ def main():
     choice = st.sidebar.selectbox('How would you like to be turn ?', menu)
 
     # Create the Home page
-    
+    if choice == 'Image Based':
+        
+        st.sidebar.header('Configuration')
+        outputsize = st.sidebar.selectbox('Output Size', [384,512,768])
+        Autocrop = st.sidebar.checkbox('Auto Crop Image',value=True) 
+        gamma = st.sidebar.slider('Gamma adjust', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
+        
+ 
+
+        Image = st.file_uploader('Upload your portrait here',type=['jpg','jpeg','png'])
+        if Image is not None:
+            col1, col2 = st.beta_columns(2)
+            Image = Image.read()
+            Image = tf.image.decode_image(Image, channels=3).numpy()                  
+            Image = adjust_gamma(Image, gamma=gamma)
+            with col1:
+                st.image(Image)
+            input_image = loadtest(Image,cropornot=Autocrop)
+            prediction = comic_model(input_image, training=True)
+            prediction = tf.squeeze(prediction,0)
+            prediction = prediction* 0.5 + 0.5
+            prediction = tf.image.resize(prediction, 
+                           [outputsize, outputsize],
+                           method=tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+            prediction=  prediction.numpy()
+            with col2:
+                st.image(prediction)
     
 
-    if choice == 'URL':
+    elif choice == 'URL':
         st.sidebar.header('Configuration')
         outputsize = st.sidebar.selectbox('Output Size', [384,512,768])
         Autocrop = st.sidebar.checkbox('Auto Crop Image',value=True) 
