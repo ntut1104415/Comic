@@ -84,7 +84,7 @@ def main():
         
         Image = st.text_input('The URL link')
         st.image(Image)
-         = Image.open(Image)
+         Image= Image.open(Image)
         
         if Image is not None:
             col1, col2 = st.beta_columns(2)
