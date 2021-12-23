@@ -92,7 +92,7 @@ def main():
             Image = adjust_gamma(Image, gamma=gamma)
             with col1:
                 st.image(Image)
-            text_image = loadtest(Image,cropornot=Autocrop)
+            text_input = loadtest(Image,cropornot=Autocrop)
             prediction = comic_model(input_image, training=True)
             prediction = tf.squeeze(prediction,0)
             prediction = prediction* 0.5 + 0.5
