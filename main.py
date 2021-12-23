@@ -87,7 +87,6 @@ def main():
         response = requests.get(url)
        # st.write(response.content)
         Image = (response.content)
-        st.image(Image)
         if Image is not None:
             col1, col2 = st.beta_columns(2)
           #  Image = Image.read()
