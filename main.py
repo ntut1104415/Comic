@@ -85,12 +85,12 @@ def main():
         
         url = st.text_input('The URL link')
         response = requests.get(url)
-        st.write(response.content)
-        Image = Image.open(BytesIO(response.content))
+       # st.write(response.content)
+        Image = (response.content)
         st.image(Image)
         if Image is not None:
             col1, col2 = st.beta_columns(2)
-            Image = Image.read()
+          #  Image = Image.read()
             Image = tf.image.decode_image(Image).numpy()
             Image = adjust_gamma(Image, gamma=gamma)
             with col1:
