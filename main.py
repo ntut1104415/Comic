@@ -74,15 +74,15 @@ def main():
                 prediction=  prediction.numpy()
                 with col2:
                     st.image(prediction)
-    
+            #elif mode == '油畫風格':
 
-        elif choice == 'URL':
-            st.sidebar.header('配置')
-            mode = st.sidebar.selectbox('模式選擇', ['漫畫風格','油畫風格'])
-            outputsize = st.sidebar.selectbox('輸出尺寸', [384,512,768])
-            Autocrop = st.sidebar.checkbox('自動裁剪照片',value=True) 
-            gamma = st.sidebar.slider('Gamma 調整', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
-        
+    elif choice == 'URL':
+        st.sidebar.header('配置')
+        mode = st.sidebar.selectbox('模式選擇', ['漫畫風格','油畫風格'])
+        outputsize = st.sidebar.selectbox('輸出尺寸', [384,512,768])
+        Autocrop = st.sidebar.checkbox('自動裁剪照片',value=True) 
+        gamma = st.sidebar.slider('Gamma 調整', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
+        if mode == '漫畫風格': 
             url = st.text_input('網址連結')
             response = requests.get(url)
         # st.write(response.content)
@@ -104,7 +104,7 @@ def main():
                 prediction=  prediction.numpy()
                 with col2:
                     st.image(prediction)
-       #elif mode == '油畫風格':
+       
     #     class OpenCVVideoProcessor(VideoProcessorBase):
     #         def __init__(self) -> None:
     #             self._model_lock = threading.Lock()
