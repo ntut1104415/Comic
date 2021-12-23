@@ -77,6 +77,11 @@ def main():
     
 
     elif choice == 'URL':
+        st.sidebar.header('Configuration')
+        outputsize = st.sidebar.selectbox('Output Size', [384,512,768])
+        Autocrop = st.sidebar.checkbox('Auto Crop Image',value=True) 
+        gamma = st.sidebar.slider('Gamma adjust', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
+        
         Image = st.text_input('The URL link')
         st.image(Image)
         
