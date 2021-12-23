@@ -33,7 +33,7 @@ def main():
     st.set_page_config(layout="wide")
     
     st.image(os.path.join('Images','Banner No2.png'), use_column_width  = True)
-    st.markdown("<h1 style='text-align: center; color: white;'>Time to become a comic book character</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: white;'>是時候成為漫畫人物了</h1>", unsafe_allow_html=True)
     with st.beta_expander("Configuration Option"):
 
         st.write("**AutoCrop** help the model by finding and cropping the biggest face it can find.")
