@@ -85,6 +85,7 @@ def main():
         Image = st.text_input('The URL link')
         st.image(Image)
         Image= Image.open(Image)
+        st.write("gghh")
         if Image is not None:
             col1, col2 = st.beta_columns(2)
             Image = Image.read()
