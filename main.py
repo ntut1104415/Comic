@@ -11,7 +11,6 @@ import numpy as np
 import streamlit as st
 from PIL import Image
 import cv2
-import imutils
 from neural_style_transfer import get_model_from_path, style_transfer
 from data import *
 
