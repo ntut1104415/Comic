@@ -82,10 +82,9 @@ def main():
         Autocrop = st.sidebar.checkbox('Auto Crop Image',value=True) 
         gamma = st.sidebar.slider('Gamma adjust', min_value=0.1, max_value=3.0,value=1.0,step=0.1) # change the value here to get different result
         
-        Image = st.text_input('The URL link')
+        Image = st._input('The URL link')
         st.image(Image)
         Image= Image.open(Image)
-        
         if Image is not None:
             col1, col2 = st.beta_columns(2)
             Image = Image.read()
@@ -93,7 +92,7 @@ def main():
             Image = adjust_gamma(Image, gamma=gamma)
             with col1:
                 st.image(Image)
-            input_image = loadtest(Image,cropornot=Autocrop)
+            text_image = loadtest(Image,cropornot=Autocrop)
             prediction = comic_model(input_image, training=True)
             prediction = tf.squeeze(prediction,0)
             prediction = prediction* 0.5 + 0.5
