@@ -50,7 +50,7 @@ def main():
     
     
 
-    elif choice == 'URL':
+    if choice == 'URL':
         st.sidebar.header('Configuration')
         outputsize = st.sidebar.selectbox('Output Size', [384,512,768])
         Autocrop = st.sidebar.checkbox('Auto Crop Image',value=True) 
