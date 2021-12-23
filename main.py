@@ -57,10 +57,10 @@ def main():
  
 
         Image = st.file_uploader('Upload your portrait here',type=['jpg','jpeg','png'])
-        st.write(Image)
         if Image is not None:
             col1, col2 = st.beta_columns(2)
             Image = Image.read()
+            st.write(Image)
             Image = tf.image.decode_image(Image, channels=3).numpy()                  
             Image = adjust_gamma(Image, gamma=gamma)
             with col1:
