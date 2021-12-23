@@ -23,7 +23,7 @@ import streamlit as st
 #         "audio": False,
 #     },)
 
-model_path = os.path.join('model','ModelTrainOnKaggle.h5','candy.t7')
+model_path = os.path.join('model','ModelTrainOnKaggle.h5')
 @st.cache
 def model_load():
     model = tf.keras.models.load_model(model_path)
