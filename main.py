@@ -34,11 +34,11 @@ def main():
     
     st.image(os.path.join('Images','CX9.png'), use_column_width  = True)
     st.markdown("<h1 style='text-align: center; color: white;'>車牌辨識　邊孤輪</h1>", unsafe_allow_html=True)
-    with st.beta_expander("Configuration Option"):
+#    with st.beta_expander("Configuration Option"):
 
-        st.write("**AutoCrop** help the model by finding and cropping the biggest face it can find.")
-        st.write("**Gamma Adjustment** can be used to lighten/darken the image")
-    comic_model = model_load()
+#        st.write("**AutoCrop** help the model by finding and cropping the biggest face it can find.")
+#        st.write("**Gamma Adjustment** can be used to lighten/darken the image")
+#    comic_model = model_load()
 
 
     menu = ['Image Based', 'URL']
