@@ -74,7 +74,7 @@ def main():
                 prediction=  prediction.numpy()
                 with col2:
                     st.image(prediction)
-            elif mode == '油畫風格':
+            #elif mode == '油畫風格':
 
     elif choice == 'URL':
         st.sidebar.header('配置')
